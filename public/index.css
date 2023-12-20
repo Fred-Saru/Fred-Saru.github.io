@@ -7,6 +7,9 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
+
+  font-family: 'Harry Potter', sans-serif;
+  color: #daae69;
   background-color: #040414;
 }
 
@@ -14,6 +17,10 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+section.left {
+  padding: 65px 0;
 }
 
 main {

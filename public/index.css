@@ -37,6 +37,7 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 div {
@@ -44,11 +45,43 @@ div {
   padding-bottom: 50px;
 }
 
+.roulette {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+}
+
+.roulette > * {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.wizard {
+  animation: spinAround 11.2s linear infinite;
+}
+
+.toto {
+  transform: rotate(90deg);
+}
+
+.choixpeau {
+  font-family: 'Harry Potter', sans-serif;
+}
+
+@keyframes spinAround {
+  from {
+    transform: rotate(0deg) translate(450px) scale(1.2);
+  }
+  to {
+    transform: rotate(360deg) translate(450px) scale(1.2);
+  }
+}
+
 @keyframes flicker {
   0% {
     opacity: 0;
   }
-  50% {
+  25% {
     opacity: 0;
   }
   100% {

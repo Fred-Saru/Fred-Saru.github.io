@@ -1,3 +1,7 @@
+:root {
+  --footstep-rotation: 0; 
+}
+
 html, body {
   margin: 0;
   height: 100%;
@@ -23,11 +27,31 @@ section.left {
   padding: 65px 0;
 }
 
+.footstep {
+  opacity: 0;
+  animation: flicker 8s ease alternate infinite;
+  transform: rotateZ(var(--footstep-rotation));
+}
+
 main {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 div {
-  margin: auto;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

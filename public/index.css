@@ -29,7 +29,7 @@ section.left {
 
 .footstep {
   opacity: 0;
-  animation: flicker 8s ease alternate infinite;
+  animation: flicker 5s ease alternate infinite;
   transform: rotateZ(var(--footstep-rotation));
 }
 
@@ -46,6 +46,9 @@ div {
 }
 
 .roulette {
+  width: 0;
+  height: 0;
+
   display: grid;
   justify-content: center;
   align-content: center;
@@ -57,7 +60,7 @@ div {
 }
 
 .wizard {
-  animation: spinAround 11.2s linear infinite;
+  animation: spinAround 13.5s linear infinite;
 }
 
 .toto {
@@ -70,10 +73,10 @@ div {
 
 @keyframes spinAround {
   from {
-    transform: rotate(0deg) translate(450px) scale(1.2);
+    transform: rotate(0deg) translate(200px) scale(0.8);
   }
   to {
-    transform: rotate(360deg) translate(450px) scale(1.2);
+    transform: rotate(360deg) translate(200px) scale(0.8);
   }
 }
 
@@ -81,7 +84,7 @@ div {
   0% {
     opacity: 0;
   }
-  25% {
+  50% {
     opacity: 0;
   }
   100% {

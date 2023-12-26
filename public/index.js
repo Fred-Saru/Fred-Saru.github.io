@@ -1,8 +1,8 @@
 const defaultCookie = {
-    "gryfCounter": 20,
-    "serdCounter": 20,
-    "serpCounter": 20,
-    "poufCounter": 20
+    "gryffondor": 20,
+    "poufsouffle": 20,
+    "serdaigle": 20,
+    "serpentard": 20
 };
 
 const houses = [
@@ -82,9 +82,12 @@ function startRoulette() {
 
     const houseId = Math.round(Math.random() * 3);
 
-    setInterval(() => {
+    setTimeout(() => {
         const house = houses[houseId];
         wrapper.classList.add(house);
+        const cookie = getCookie();
+        cookie[house]--;
+        saveCookie(cookie);
     }, 3000);
 
 }
@@ -93,23 +96,27 @@ function endRoulette() {
     const roulette = document.querySelector(".roulette");
 }
 
-function getCookie(name) {
+function getCookie() {
     const value = document.cookie
         .split(";")
-        .find((row) => row.startsWith(`${name}=`))
+        .find((row) => row.startsWith("poudlard="))
         ?.split("=")[1];
 
     return !!value ? JSON.parse(value) : defaultCookie;
+}
+
+function saveCookie(value) {
+    document.cookie = `poudlard=${JSON.stringify(value)};expires=${new Date("Jan 30 2024 00:00:00").toUTCString()}`;
 }
 
 (() => {
     document.querySelector("section.left").innerHTML = generateFootstep("left");
     document.querySelector("section.right").innerHTML = generateFootstep("right");
 
-    const poudlardCounter = getCookie("poudlard");
+    const poudlardCounter = getCookie();
 
     if (!poudlardCounter) {
-        document.cookie = `poudlard=${JSON.stringify(defaultCookie)};expires=${new Date("Jan 30 2024 00:00:00").toUTCString()}`;
+        saveCookie(defaultCookie);
     }
 
     const footsteps = document.querySelectorAll(".footstep");

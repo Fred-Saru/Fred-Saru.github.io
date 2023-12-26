@@ -75,16 +75,36 @@ div {
   height: 100px;
 }
 
+.gryffondor, .serpentard, .serdaigle, .poufsouffle {
+  height: 200px;
+  top: calc(50% - 115px);
+}
+
+.gryffondor {
+  left: calc(50% - 79.5px);
+}
+
+.serdaigle {
+  left: calc(50% - 82px);
+}
+
+.poufsouffle {
+  left: calc(50% - 81.5px);
+}
+
+.serpentard {
+  left: calc(50% - 84px);
+}
+
 .choixpeauWrapper > *{
   display: none;
-  transform: scale(1.2);
 }
 
 .choixpeauWrapper.choixpeau > .choixpeau{
   display: inline-block;
 }
 
-.choixpeauWrapper.griffyndor > .griffyndor{
+.choixpeauWrapper.gryffondor > .gryffondor{
   display: inline-block;
 }
 

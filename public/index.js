@@ -1,3 +1,10 @@
+const defaultCookie = {
+    "gryfCounter": 20,
+    "serdCounter": 20,
+    "serpCounter": 20,
+    "poufCounter": 20
+};
+
 const houses = [
     "gryffondor",
     "poufsouffle",
@@ -69,15 +76,41 @@ function generateFootstep(side) {
 function startRoulette() {
     const roulette = document.querySelector(".roulette");
     roulette.innerHTML = generateRoulette();
+
+    const wrapper = document.querySelector(".choixpeauWrapper");
+    wrapper.classList.remove("choixpeau");
+
+    const houseId = Math.round(Math.random() * 3);
+
+    setInterval(() => {
+        const house = houses[houseId];
+        wrapper.classList.add(house);
+    }, 3000);
+
 }
 
 function endRoulette() {
     const roulette = document.querySelector(".roulette");
 }
 
+function getCookie(name) {
+    const value = document.cookie
+        .split(";")
+        .find((row) => row.startsWith(`${name}=`))
+        ?.split("=")[1];
+
+    return !!value ? JSON.parse(value) : defaultCookie;
+}
+
 (() => {
     document.querySelector("section.left").innerHTML = generateFootstep("left");
     document.querySelector("section.right").innerHTML = generateFootstep("right");
+
+    const poudlardCounter = getCookie("poudlard");
+
+    if (!poudlardCounter) {
+        document.cookie = `poudlard=${JSON.stringify(defaultCookie)};expires=${new Date("Jan 30 2024 00:00:00").toUTCString()}`;
+    }
 
     const footsteps = document.querySelectorAll(".footstep");
     footsteps.forEach(el => {
@@ -85,7 +118,7 @@ function endRoulette() {
         el.style.setProperty('--footstep-rotation', angle + 'deg');
     });
 
-    const choixpeau = document.querySelector(".choixpeau");
+    const choixpeau = document.querySelector("img.choixpeau");
 
     choixpeau.addEventListener("touchstart", startRoulette);
     choixpeau.addEventListener("mousedown", startRoulette);

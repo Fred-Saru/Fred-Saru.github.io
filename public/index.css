@@ -75,6 +75,31 @@ div {
   height: 100px;
 }
 
+.choixpeauWrapper > *{
+  display: none;
+  transform: scale(1.2);
+}
+
+.choixpeauWrapper.choixpeau > .choixpeau{
+  display: inline-block;
+}
+
+.choixpeauWrapper.griffyndor > .griffyndor{
+  display: inline-block;
+}
+
+.choixpeauWrapper.serdaigle > .serdaigle{
+  display: inline-block;
+}
+
+.choixpeauWrapper.serpentard > .serpentard{
+  display: inline-block;
+}
+
+.choixpeauWrapper.poufsouffle > .poufsouffle{
+  display: inline-block;
+}
+
 @keyframes spinAround {
   from {
     transform: rotate(0deg) translate(200px) scale(0.8);

@@ -69,12 +69,10 @@ function generateFootstep(side) {
 function startRoulette() {
     const roulette = document.querySelector(".roulette");
     roulette.innerHTML = generateRoulette();
-    roulette.classList.add("play");
 }
 
 function endRoulette() {
     const roulette = document.querySelector(".roulette");
-    roulette.classList.remove("play");
 }
 
 (() => {

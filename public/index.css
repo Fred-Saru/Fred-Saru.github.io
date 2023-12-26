@@ -63,7 +63,7 @@ div {
   animation: spinAround 13.5s linear infinite;
 }
 
-.toto {
+.keep-axis {
   transform: rotate(90deg);
 }
 

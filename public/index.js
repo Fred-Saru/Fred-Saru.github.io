@@ -49,7 +49,7 @@ const charaters = [...charatersByHouses.gryffondor, ...charatersByHouses.poufsou
 function generateRoulette() {
     let roulette = "";
     charaters.forEach((char, idx) => {
-        roulette += `<div class="wizard" style="animation-delay: -${0.5 * idx}s;"><img src="public/img/characters/${char}.png" alt="${char}" class="toto"/></div>`;
+        roulette += `<div class="wizard" style="animation-delay: -${0.5 * idx}s;"><img src="public/img/characters/${char}.png" alt="${char}" class="keep-axis"/></div>`;
     });
     return roulette;
 };
@@ -66,6 +66,17 @@ function generateFootstep(side) {
     return footsteps;
 }
 
+function startRoulette() {
+    const roulette = document.querySelector(".roulette");
+    roulette.innerHTML = generateRoulette();
+    roulette.classList.add("play");
+}
+
+function endRoulette() {
+    const roulette = document.querySelector(".roulette");
+    roulette.classList.remove("play");
+}
+
 (() => {
     document.querySelector("section.left").innerHTML = generateFootstep("left");
     document.querySelector("section.right").innerHTML = generateFootstep("right");
@@ -78,14 +89,9 @@ function generateFootstep(side) {
 
     const choixpeau = document.querySelector(".choixpeau");
 
-    choixpeau.addEventListener("mousedown", () => {
-        const roulette = document.querySelector(".roulette");
-        roulette.innerHTML = generateRoulette();
-        roulette.classList.add("play");
-    });
+    choixpeau.addEventListener("touchstart", startRoulette);
+    choixpeau.addEventListener("mousedown", startRoulette);
 
-    choixpeau.addEventListener("mouseup", () => {
-        const roulette = document.querySelector(".roulette");
-        roulette.classList.remove("play");
-    });
+    choixpeau.addEventListener("touchend", endRoulette);
+    choixpeau.addEventListener("mouseup", endRoulette);
 })();

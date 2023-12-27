@@ -76,7 +76,7 @@ function shuffle(array) {
 function generateRoulette() {
     let roulette = "";
     const randomizedCharacters = shuffle(charaters);
-    randomizedCharacters.slice(7).forEach((char, idx) => {
+    randomizedCharacters.slice(13).forEach((char, idx) => {
         roulette += `<div class="wizard" style="animation-delay: -${0.5 * idx}s;"><img src="public/img/characters/${char}.png" alt="${char}" class="keep-axis"/></div>`;
     });
     return roulette;
@@ -113,17 +113,17 @@ function getHouseId(cookie) {
 function startRoulette() {
     const roulette = document.querySelector(".roulette");
     roulette.innerHTML = generateRoulette();
+    roulette.classList.add("play");
 
     const wrapper = document.querySelector(".choixpeauWrapper");
     wrapper.classList.remove("choixpeau");
-    wrapper.classList.add("countdown");
 
     const [value, version] = getCookie();
     const houseId = getHouseId(value);
 
     setTimeout(() => {
+        roulette.classList.remove("play");
         const house = houses[houseId];
-        wrapper.classList.remove("countdown");
         wrapper.classList.add(house);
         value[house]--;
         saveCookie(value);
@@ -133,7 +133,7 @@ function startRoulette() {
         eventListener = () => restart(house);
         restartBtn.addEventListener("touchstart", eventListener);
         restartBtn.addEventListener("mousedown", eventListener);
-    }, 6000);
+    }, 7000);
 }
 
 function getCookie() {

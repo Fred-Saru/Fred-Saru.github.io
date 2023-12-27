@@ -133,7 +133,7 @@ function startRoulette() {
         eventListener = () => restart(house);
         restartBtn.addEventListener("touchstart", eventListener);
         restartBtn.addEventListener("mousedown", eventListener);
-    }, 7000);
+    }, 5000);
 }
 
 function getCookie() {

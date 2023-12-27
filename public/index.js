@@ -1,4 +1,4 @@
-const defaultVersion = "0.9.0";
+const defaultVersion = "0.9.1";
 
 const defaultCookie = {
     "gryffondor": 20,

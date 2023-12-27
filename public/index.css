@@ -60,11 +60,11 @@ div {
 }
 
 .wizard {
-  animation: spinAround 13.5s linear infinite;
+  animation: spinAround 10s linear infinite;
 }
 
 .keep-axis {
-  transform: rotate(90deg);
+  transform: rotate(90deg) scale(1.2);
 }
 
 .choixpeauWrapper {
@@ -118,6 +118,65 @@ div {
 
 .choixpeauWrapper.poufsouffle > .poufsouffle{
   display: inline-block;
+}
+
+.choixpeauWrapper.countdown > .countdown{
+  display: inline-block;
+}
+
+.restart {
+  opacity: 0;
+}
+
+.restartBtn {
+  border: none;
+  font-family: 'Harry Potter', sans-serif;
+  color: #daae69;
+  background-color: #040414;
+}
+
+.show {
+  opacity: 1;
+}
+
+.countdown {
+  top: calc(50% - 6em);
+  left: calc(50% - 40px);
+  counter-reset: test 7;
+  animation: countdown 7s linear;
+}
+
+.countdown.display::after {
+  content: counter(test);
+  font-family: 'Harry Potter', sans-serif;
+  font-size: 10em;;
+  color: #daae69;
+}
+
+@keyframes countdown {
+  0% {
+  }
+  14% {
+    counter-increment: test -1;
+  }
+  28% {
+    counter-increment: test -2;
+  }
+  42% {
+    counter-increment: test -3;
+  }
+  56% {
+    counter-increment: test -4;
+  }
+  70% {
+    counter-increment: test -5;
+  }
+  84% {
+    counter-increment: test -6;
+  }
+  98% {
+    counter-increment: test -7;
+  }
 }
 
 @keyframes spinAround {
